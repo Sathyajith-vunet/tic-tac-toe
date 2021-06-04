@@ -60,7 +60,7 @@ export default function App() {
       <button
         className="singleCell"
         onClick={() => onClickHandler(cellNumber)}
-        disabled={value === "" ? false : true}
+        disabled={value !== "" || winner !== ""}
       >
         {value}
       </button>
@@ -78,7 +78,7 @@ export default function App() {
   return (
     <div className="App">
       {xTurn && <div className="turn-header">X's turn to play</div>}
-      {!xTurn && <div className="turn-header">Y's turn to play</div>}
+      {!xTurn && <div className="turn-header">O's turn to play</div>}
       <div className="outter-square">
         <div className="row">
           {displayCell(1)}
@@ -96,7 +96,7 @@ export default function App() {
           {displayCell(9)}
         </div>
       </div>
-      {winner !== "" && <div className="result">{`Winner is ${winner}`}</div>}
+      {winner !== "" && <div className="result">{`${winner} is the winner.`}</div>}
       {draw && <div className="result">It's a draw.</div>}
       <button className="reset-button" onClick={() => handleReset()}>
         Reset
